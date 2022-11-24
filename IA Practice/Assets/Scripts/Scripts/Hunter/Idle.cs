@@ -13,27 +13,27 @@ public class Idle : IState
 
     public void OnEnter()
     {
-        Debug.Log("EMPEZO IDLE");
+        //Debug.Log("EMPEZO IDLE");
     }
 
     public void OnUpdate()
     {
-        Hunter.instance.ChargeEnergy();
+        // Hunter.instance.ChargeEnergy();
 
-        if (Hunter.instance.Energy >= 10)
-        {
-            if (Hunter.instance._boidIsNear)
-            {
-                _fsm.ChangeState("Chase");
-            }
+        // if (Hunter.instance.Energy >= 10)
+        // {
+        //     if (Hunter.instance._boidIsNear)
+        //     {
+        //         _fsm.ChangeState("Chase");
+        //     }
 
             _fsm.ChangeState("Patrol");
-        }
+        //}
 
     }
 
     public void OnExit()
     {
-        Debug.Log("TERMINO IDLE");
+        //Debug.Log("TERMINO IDLE");
     }
 }

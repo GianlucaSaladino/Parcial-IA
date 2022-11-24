@@ -4,79 +4,52 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    [SerializeField]
-    float _width = 15;
-    [SerializeField]
-    float _height = 9;
-    float _timeToSpawn = 2.5f;
-    float _currentTime;
-    public boid[] boids;
-
-    public GameObject food;
-
-    [Range(0, 3)]
-    public float weightSeparation = 1;
-    [Range(0, 3)]
-    public float weightCohesion = 1;
-    [Range(0, 3)]
-    public float weightAlignment = 1;
-
     public static GameManager instance;
+    public LayerMask maskWall;
+    public PathFinding pathfinding;
+    public Player player;
+    Node _startingNode;
+    Node _goalNode;
 
-    private void Awake()
+    void Awake()
     {
         instance = this;
-        _currentTime = _timeToSpawn;
     }
 
     private void Update()
     {
-        _currentTime -= Time.deltaTime;
-
-        if (_currentTime <= 0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            //SpawnFood();
-            _currentTime = _timeToSpawn;
+            StartCoroutine(pathfinding.CoroutineCalculateThetaStar(_startingNode, _goalNode));
+            //player.SetPath(pathfinding.CalculateBFS(_startingNode, _goalNode));
         }
     }
-    public Vector3 ApplyBound(Vector3 objectPosition)
+
+    public void SetStartingNode(Node node)
     {
-        if (objectPosition.x > _width)
-            objectPosition.x = -_width;
-        if (objectPosition.x < -_width)
-            objectPosition.x = _width;
+        if (_startingNode != null)
+            ChangeColorNode(_startingNode, Color.white);
 
-        if (objectPosition.z > _height)
-            objectPosition.z = -_height;
-        if (objectPosition.z < -_height)
-            objectPosition.z = _height;
-
-        return objectPosition;
+        _startingNode = node;
+        ChangeColorNode(_startingNode, Color.red);
+        player.transform.position = _startingNode.transform.position;
     }
 
-    //void SpawnFood()
-    //{
-    //    float x = Random.Range(-_width, _width);
-    //    float z = Random.Range(-_height, _height);
-    //
-    //    Vector3 spawnPos = new Vector3(x, 0, z);
-    //    Instantiate(food, spawnPos, Quaternion.identity);
-    //}
-        private void OnDrawGizmos()
+    public void SetGoalNode(Node node)
     {
-        Gizmos.color = Color.red;
+        if (_goalNode != null)
+            ChangeColorNode(_goalNode, Color.white);
 
-        Vector3 topLeft = new Vector3(-_width, 0, _height);
-        Vector3 topRight = new Vector3(_width, 0, _height);
-        Vector3 botRight = new Vector3(_width, 0, -_height);
-        Vector3 botLeft = new Vector3(-_width, 0, -_height);
-
-
-        Gizmos.DrawLine(topLeft, topRight);
-        Gizmos.DrawLine(topRight, botRight);
-        Gizmos.DrawLine(botRight, botLeft);
-        Gizmos.DrawLine(botLeft, topLeft);
-
+        _goalNode = node;
+        ChangeColorNode(_goalNode, Color.green);
     }
+
+    public void ChangeColorNode(Node node, Color color)
+    {
+        node.GetComponent<Renderer>().material.color = color;
+    }
+
+
+
+
 }

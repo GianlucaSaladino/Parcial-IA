@@ -13,14 +13,15 @@ public class Hunter : MonoBehaviour
     private float _chargeSpeed = 2.5f;
     [Range(1, 15), SerializeField] private float _boidViewRadius;
     public bool _boidIsNear;
-    private boid nearestBoid;
+    private Player nearestBoid;
+    public Vector3 boidPos;
     private Vector3 velocity;
     [SerializeField] private float energy;
     [SerializeField] LayerMask _boidMask;
     public static Hunter instance;
 
     public float   Energy { get => energy; set => energy = value; }
-    public boid nearstBoid { get => nearestBoid; set => nearestBoid = value; }
+    public Player nearstBoid { get => nearestBoid; set => nearestBoid = value; }
     public Vector3 Velocity { get => velocity; set => velocity = value; }
 
     private void Awake()
@@ -41,25 +42,25 @@ public class Hunter : MonoBehaviour
     private void Update()
     {
         _fsm.Execute();
-        var _NearBoid = Physics.OverlapSphere(transform.position, _boidViewRadius, _boidMask);
-        if (_NearBoid.Length>0)
-        {
-            _boidIsNear = _NearBoid[0];
-            nearestBoid = _NearBoid[0].GetComponent<boid>();
-        }
-        else
-        {
-            _boidIsNear = false;
-        }
+        // var _NearBoid = Physics.OverlapSphere(transform.position, _boidViewRadius, _boidMask);
+        // if (_NearBoid.Length>0)
+        // {
+        //     _boidIsNear = _NearBoid[0];
+        //     nearestBoid = _NearBoid[0].GetComponent<boid>();
+        // }
+        // else
+        // {
+        //     _boidIsNear = false;
+        // }
     }
 
-    public void ChargeEnergy()
-    {
-        if (energy < 10)
-        {
-            energy += Time.deltaTime * _chargeSpeed;
-        }
-    }
+    // public void ChargeEnergy()
+    // {
+    //     if (energy < 10)
+    //     {
+    //         energy += Time.deltaTime * _chargeSpeed;
+    //     }
+    // }
     //public void DecreaseEnergy()
     //{
     // energy -= Time.deltaTime;

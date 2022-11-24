@@ -10,7 +10,7 @@ public class Chase : IState
     float _maxForce;
     Vector3 _velocity;
     FMS _fsm;
-    boid _nearestBoid;
+    Vector3 _boidPos;
 
     public Chase(FMS fsm, Transform transform, float speed, float maxVelocity, float maxForce)
     {
@@ -23,8 +23,8 @@ public class Chase : IState
 
     public void OnEnter()
     {
-        Debug.Log("ENTER ESTADO PERSEGUIR");
-        _nearestBoid = Hunter.instance.nearstBoid;
+       // Debug.Log("ENTER ESTADO PERSEGUIR");
+        _boidPos = Hunter.instance.boidPos;
     }
 
     public void OnUpdate()
@@ -35,22 +35,39 @@ public class Chase : IState
             _fsm.ChangeState("Patrol");
         }
         _transform.position += _velocity * Time.deltaTime;
-        Move(Pursuit(_nearestBoid));
+        Move(Arrive(_boidPos));
     }
 
- 
-
-    Vector3 Pursuit(boid target)
+    Vector3 Arrive(Vector3 actualTarget)
     {
-        Vector3 finalPos = target.transform.position + target.Velocity * Time.deltaTime;
-        Vector3 desired = finalPos - _transform.position;
+        Vector3 desired = actualTarget - _transform.position;
+        float dist = desired.magnitude;
         desired.Normalize();
-        desired *= _maxVelocity;
+        if (dist <= 2)
+        {
+            desired *= _maxVelocity * (dist / 2);
+        }
+        else
+        {
+            desired *= _maxVelocity;
+        }
 
         Vector3 steering = desired - _velocity;
 
         return steering;
     }
+
+    // Vector3 Pursuit(Player target)
+    // {
+    //     Vector3 finalPos = target.transform.position + target.transform.forward * Time.deltaTime;
+    //     Vector3 desired = finalPos - _transform.position;
+    //     desired.Normalize();
+    //     desired *= _maxVelocity;
+
+    //     Vector3 steering = desired - _velocity;
+
+    //     return steering;
+    // }
 
     void Move(Vector3 force)
     {
@@ -60,6 +77,6 @@ public class Chase : IState
 
     public void OnExit()
     {
-        Debug.Log("EXIT ESTADO PERSEGUIR");
+       // Debug.Log("EXIT ESTADO PERSEGUIR");
     }
 }

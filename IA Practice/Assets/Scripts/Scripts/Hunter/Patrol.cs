@@ -27,7 +27,7 @@ public class Patrol : IState
 
     public void OnEnter()
     {
-        Debug.Log("EMPECE A PATRULLAR");
+        //Debug.Log("EMPECE A PATRULLAR");
     }
 
     public void OnUpdate()
@@ -40,18 +40,18 @@ public class Patrol : IState
             _fsm.ChangeState("Chase");
         }
 
-        if (Hunter.instance.Energy <= 0)
-        {
-            _fsm.ChangeState("Idle");
-        }
+        // if (Hunter.instance.Energy <= 0)
+        // {
+        //     _fsm.ChangeState("Idle");
+        // }
 
-        Debug.Log("current" + _current);
-        Debug.Log("last" + _last);
+        // Debug.Log("current" + _current);
+        // Debug.Log("last" + _last);
     }
 
     public void OnExit()
     {
-        Debug.Log("DEJE DE PATRULLAR");
+        //Debug.Log("DEJE DE PATRULLAR");
     }
 
     private void PointPatrol()
