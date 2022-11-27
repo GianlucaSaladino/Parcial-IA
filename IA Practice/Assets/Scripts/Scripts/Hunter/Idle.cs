@@ -13,7 +13,7 @@ public class Idle : IState
 
     public void OnEnter()
     {
-        //Debug.Log("EMPEZO IDLE");
+        Debug.Log("EMPEZO IDLE");
     }
 
     public void OnUpdate()

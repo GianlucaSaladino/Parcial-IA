@@ -5,26 +5,21 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed;
-    List<Node> _path = new List<Node>();
+    float _movHor;
+    float _movVer;
+    Vector3 dir;
 
-    void Update()
+
+    private void Update()
     {
-        if(_path.Count > 0)
-        {
-            var dir = _path[0].transform.position - transform.position;
+        _movHor = Input.GetAxis("Horizontal");
+        _movVer = Input.GetAxis("Vertical");
+        dir.x = _movHor;
+        dir.z = _movVer;
 
-            transform.position += dir.normalized * speed * Time.deltaTime;
+        transform.Translate(dir*speed*Time.deltaTime);
+        
 
-            if (dir.magnitude <= 0.5f)
-                _path.RemoveAt(0);
-        }
     }
 
-    public void SetPath(List<Node> newPath)
-    {
-        _path.Clear();
-
-        foreach (var p in newPath)
-            _path.Add(p);
-    }
 }

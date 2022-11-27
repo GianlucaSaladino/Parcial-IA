@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public LayerMask maskWall;
-    public PathFinding pathfinding;
+    public Pathfinding pathfinding;
     public Player player;
     Node _startingNode;
     Node _goalNode;
@@ -16,14 +16,14 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(pathfinding.CoroutineCalculateThetaStar(_startingNode, _goalNode));
-            //player.SetPath(pathfinding.CalculateBFS(_startingNode, _goalNode));
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Space))
+    //     {
+    //         StartCoroutine(pathfinding.CoroutineCalculateThetaStar(_startingNode, _goalNode));
+    //         //player.SetPath(pathfinding.CalculateBFS(_startingNode, _goalNode));
+    //     }
+    // }
 
     public void SetStartingNode(Node node)
     {

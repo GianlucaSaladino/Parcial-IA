@@ -11,26 +11,31 @@ public class Chase : IState
     Vector3 _velocity;
     FMS _fsm;
     Vector3 _boidPos;
+    Hunter _hunter;
 
-    public Chase(FMS fsm, Transform transform, float speed, float maxVelocity, float maxForce)
+
+    public Chase(FMS fsm, Transform transform, float speed, float maxVelocity, float maxForce,Hunter hunter)
     {
         _fsm = fsm;
         _transform = transform;
         _speed = speed;
         _maxVelocity = maxVelocity;
         _maxForce = maxForce;
+        _hunter = hunter;
+
     }
 
     public void OnEnter()
     {
-       // Debug.Log("ENTER ESTADO PERSEGUIR");
-        _boidPos = Hunter.instance.boidPos;
+        Debug.Log("ENTER ESTADO PERSEGUIR " + _transform.name);
+
+        _boidPos = _hunter.boidPos;
     }
 
     public void OnUpdate()
     {
 
-        if (!Hunter.instance._boidIsNear)
+        if (!_hunter._boidIsNear)
         {
             _fsm.ChangeState("Patrol");
         }
@@ -72,7 +77,7 @@ public class Chase : IState
     void Move(Vector3 force)
     {
         _velocity = Vector3.ClampMagnitude(_velocity + force, _maxForce);
-        Hunter.instance.Velocity = _velocity;
+        _hunter.Velocity = _velocity;
     }
 
     public void OnExit()

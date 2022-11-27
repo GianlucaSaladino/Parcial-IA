@@ -7,7 +7,7 @@ public class FieldOfViewAgent : MonoBehaviour
     public Transform target;
     public float viewRadius;
     public float viewAngle;
-    private Enemy _enemy;
+    [SerializeField]private Enemy _enemy;
 
     private void Start() {
         _enemy = GetComponent<Enemy>();
@@ -19,8 +19,8 @@ public class FieldOfViewAgent : MonoBehaviour
         if (InFOV(target))
         {
             Debug.Log("LO VEO" + transform.name);
-            //_enemy._hunter._boidIsNear = true;
-           // _enemy._hunter.boidPos = target.position;
+            _enemy._hunter._boidIsNear = true;
+            _enemy._hunter.boidPos = target.position;
             _enemy.SendPlayerPos(target.position);
         }
         else

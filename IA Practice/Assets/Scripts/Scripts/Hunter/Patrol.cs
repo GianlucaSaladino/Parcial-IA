@@ -14,14 +14,18 @@ public class Patrol : IState
 
     public float viewRadius = 5;
 
+    Hunter _hunter;
 
-    public Patrol(FMS fsm,Transform transform , float speed, int current, Transform[] points )
+
+    public Patrol(FMS fsm,Transform transform , float speed, int current, Transform[] points,Hunter hunter )
     {
         _points = points;
         _fsm = fsm;
         _transform = transform;
         _current = current;
         _speed = speed;
+        _hunter = hunter;
+
     }
     
 
@@ -35,9 +39,13 @@ public class Patrol : IState
 
         PointPatrol();
 
-        if (Hunter.instance._boidIsNear)
+        if (_hunter._boidIsNear)
         {
             _fsm.ChangeState("Chase");
+        }
+
+        if(_hunter.startPathFinding){
+            _fsm.ChangeState("PathFinding");
         }
 
         // if (Hunter.instance.Energy <= 0)
@@ -57,6 +65,7 @@ public class Patrol : IState
     private void PointPatrol()
     {
         var dir = _points[_current].position - _transform.position;
+        _transform.forward = dir;
         _transform.position += dir.normalized * _speed * Time.deltaTime;
         //Hunter.instance.DecreaseEnergy();
 

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Hunter : MonoBehaviour
 {
-    [SerializeField] Transform[] points;
+    [SerializeField] public Transform[] points;
+    [SerializeField]Node[] _nodeArray;
+    public List<Node> _nodeNewArray;
     int _current;
     public float _speed;
     public float _maxVelocity = 8;
@@ -13,28 +15,32 @@ public class Hunter : MonoBehaviour
     private float _chargeSpeed = 2.5f;
     [Range(1, 15), SerializeField] private float _boidViewRadius;
     public bool _boidIsNear;
+    public bool startPathFinding;
     private Player nearestBoid;
     public Vector3 boidPos;
     private Vector3 velocity;
     [SerializeField] private float energy;
     [SerializeField] LayerMask _boidMask;
-    public static Hunter instance;
+    //public static Hunter instance;
 
-    public float   Energy { get => energy; set => energy = value; }
+    public float Energy { get => energy; set => energy = value; }
     public Player nearstBoid { get => nearestBoid; set => nearestBoid = value; }
     public Vector3 Velocity { get => velocity; set => velocity = value; }
 
     private void Awake()
     {
-        instance = this;
+        //instance = this;
     }
 
     private void Start()
     {
         _fsm = new FMS();
         _fsm.CreateState("Idle", new Idle(_fsm));
-        _fsm.CreateState("Patrol", new Patrol(_fsm, transform, _speed * 2, _current, points));
-        _fsm.CreateState("Chase", new Chase(_fsm, transform, _speed,_maxVelocity,_maxForce));
+        _fsm.CreateState("Patrol", new Patrol(_fsm, transform, _speed * 2, _current, points,this));
+        _fsm.CreateState("Chase", new Chase(_fsm, transform, _speed, _maxVelocity, _maxForce,this));
+        _fsm.CreateState("PathFinding", new Pathfinding(_fsm,transform,_nodeArray,this,_speed*2));
+
+
 
         _fsm.ChangeState("Idle");
     }
@@ -53,18 +59,7 @@ public class Hunter : MonoBehaviour
         //     _boidIsNear = false;
         // }
     }
-
-    // public void ChargeEnergy()
-    // {
-    //     if (energy < 10)
-    //     {
-    //         energy += Time.deltaTime * _chargeSpeed;
-    //     }
-    // }
-    //public void DecreaseEnergy()
-    //{
-    // energy -= Time.deltaTime;
-    //}
+    
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

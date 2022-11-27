@@ -229,8 +229,9 @@ GameObject:
   - component: {fileID: 41808992}
   - component: {fileID: 41808994}
   - component: {fileID: 41808993}
+  - component: {fileID: 41808995}
   m_Layer: 0
-  m_Name: Point5
+  m_Name: Point1
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -248,7 +249,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1910935010}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &41808993
 MeshRenderer:
@@ -299,6 +300,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41808991}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &41808995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41808991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 219423358}
+  - {fileID: 843234970}
+  blocked: 0
 --- !u!1 &84113605
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &127960489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,11 +547,30 @@ MonoBehaviour:
   - {fileID: 2118148577}
   - {fileID: 663695084}
   - {fileID: 1091837725}
+  _nodeArray:
+  - {fileID: 41808995}
+  - {fileID: 219423358}
+  - {fileID: 1989738088}
+  - {fileID: 843234970}
+  - {fileID: 386882339}
+  - {fileID: 1426119234}
+  - {fileID: 1310163911}
+  - {fileID: 579359672}
+  - {fileID: 1219493357}
+  - {fileID: 1093385897}
+  - {fileID: 2118148580}
+  - {fileID: 663695087}
+  - {fileID: 1091837728}
+  - {fileID: 1485285674}
+  - {fileID: 1216904498}
+  - {fileID: 1084534018}
+  _nodeNewArray: []
   _speed: 2
   _maxVelocity: 8
   _maxForce: 5
   _boidViewRadius: 2.6
   _boidIsNear: 0
+  startPathFinding: 0
   boidPos: {x: 0, y: 0, z: 0}
   energy: 10
   _boidMask:
@@ -631,6 +668,7 @@ MonoBehaviour:
   target: {fileID: 1720661560}
   viewRadius: 9.25
   viewAngle: 141.66
+  _enemy: {fileID: 0}
 --- !u!114 &127960495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,6 +685,7 @@ MonoBehaviour:
   - {fileID: 1653802284}
   - {fileID: 702408624}
   - {fileID: 2058374557}
+  _nodeArray: []
   playerPos: {x: 0, y: 0, z: 0}
   maskWall:
     serializedVersion: 2
@@ -664,8 +703,9 @@ GameObject:
   - component: {fileID: 219423355}
   - component: {fileID: 219423357}
   - component: {fileID: 219423356}
+  - component: {fileID: 219423358}
   m_Layer: 0
-  m_Name: Point1
+  m_Name: Point2
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -683,7 +723,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1910935010}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &219423356
 MeshRenderer:
@@ -734,6 +774,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219423354}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &219423358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219423354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 41808995}
+  - {fileID: 1989738088}
+  blocked: 0
 --- !u!1 &229248607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,8 +1101,9 @@ GameObject:
   - component: {fileID: 386882336}
   - component: {fileID: 386882338}
   - component: {fileID: 386882337}
+  - component: {fileID: 386882339}
   m_Layer: 0
-  m_Name: Point4
+  m_Name: Point5
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1063,7 +1121,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1910935010}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &386882337
 MeshRenderer:
@@ -1114,6 +1172,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386882335}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &386882339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386882335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 1989738088}
+  - {fileID: 843234970}
+  - {fileID: 1426119234}
+  blocked: 0
 --- !u!1 &510218634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,8 +1391,9 @@ GameObject:
   - component: {fileID: 579359669}
   - component: {fileID: 579359671}
   - component: {fileID: 579359670}
+  - component: {fileID: 579359672}
   m_Layer: 0
-  m_Name: Point6 (2)
+  m_Name: Point8
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1385,6 +1462,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579359668}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &579359672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579359668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 1310163911}
+  - {fileID: 1219493357}
+  - {fileID: 2118148580}
+  blocked: 0
 --- !u!1 &625982832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,8 +1586,9 @@ GameObject:
   - component: {fileID: 663695084}
   - component: {fileID: 663695086}
   - component: {fileID: 663695085}
+  - component: {fileID: 663695087}
   m_Layer: 0
-  m_Name: Point6 (6)
+  m_Name: Point12
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1561,6 +1657,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663695083}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &663695087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663695083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 2118148580}
+  - {fileID: 1091837728}
+  - {fileID: 1485285674}
+  blocked: 0
 --- !u!1 &668973416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,11 +1975,30 @@ MonoBehaviour:
   - {fileID: 1219493354}
   - {fileID: 1093385894}
   - {fileID: 2118148577}
+  _nodeArray:
+  - {fileID: 219423358}
+  - {fileID: 1989738088}
+  - {fileID: 843234970}
+  - {fileID: 386882339}
+  - {fileID: 41808995}
+  - {fileID: 1426119234}
+  - {fileID: 1310163911}
+  - {fileID: 579359672}
+  - {fileID: 1219493357}
+  - {fileID: 1093385897}
+  - {fileID: 2118148580}
+  - {fileID: 663695087}
+  - {fileID: 1091837728}
+  - {fileID: 1485285674}
+  - {fileID: 1216904498}
+  - {fileID: 1084534018}
+  _nodeNewArray: []
   _speed: 2
   _maxVelocity: 8
   _maxForce: 5
   _boidViewRadius: 2.6
   _boidIsNear: 0
+  startPathFinding: 0
   boidPos: {x: 0, y: 0, z: 0}
   energy: 10
   _boidMask:
@@ -1942,7 +2075,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702408617}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6885557, y: 0, z: 0.0005054474}
+  m_LocalPosition: {x: 4.27, y: 0, z: 0.3}
   m_LocalScale: {x: 0.807601, y: 0.807601, z: 0.807601}
   m_Children: []
   m_Father: {fileID: 1949658972}
@@ -1963,6 +2096,7 @@ MonoBehaviour:
   target: {fileID: 1720661560}
   viewRadius: 9.25
   viewAngle: 141.66
+  _enemy: {fileID: 0}
 --- !u!114 &702408624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1977,6 +2111,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemiesList:
   - {fileID: 1653802284}
+  - {fileID: 127960495}
+  - {fileID: 2058374557}
+  _nodeArray: []
   playerPos: {x: 0, y: 0, z: 0}
   maskWall:
     serializedVersion: 2
@@ -2277,8 +2414,9 @@ GameObject:
   - component: {fileID: 843234967}
   - component: {fileID: 843234969}
   - component: {fileID: 843234968}
+  - component: {fileID: 843234970}
   m_Layer: 0
-  m_Name: Point3
+  m_Name: Point4
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2296,7 +2434,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1910935010}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &843234968
 MeshRenderer:
@@ -2347,6 +2485,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843234966}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &843234970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843234966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 41808995}
+  - {fileID: 386882339}
+  blocked: 0
 --- !u!1 &951151933
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,8 +2786,9 @@ GameObject:
   - component: {fileID: 1084534015}
   - component: {fileID: 1084534017}
   - component: {fileID: 1084534016}
+  - component: {fileID: 1084534018}
   m_Layer: 0
-  m_Name: Point6 (10)
+  m_Name: Point16
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2701,6 +2857,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084534014}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1084534018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084534014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 1216904498}
+  blocked: 0
 --- !u!1 &1091837724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2712,8 +2884,9 @@ GameObject:
   - component: {fileID: 1091837725}
   - component: {fileID: 1091837727}
   - component: {fileID: 1091837726}
+  - component: {fileID: 1091837728}
   m_Layer: 0
-  m_Name: Point6 (7)
+  m_Name: Point13
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2782,6 +2955,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091837724}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1091837728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091837724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 1093385897}
+  - {fileID: 663695087}
+  blocked: 0
 --- !u!1 &1093385893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,8 +2983,9 @@ GameObject:
   - component: {fileID: 1093385894}
   - component: {fileID: 1093385896}
   - component: {fileID: 1093385895}
+  - component: {fileID: 1093385897}
   m_Layer: 0
-  m_Name: Point6 (4)
+  m_Name: Point10
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2863,6 +3054,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093385893}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1093385897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093385893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 1219493357}
+  - {fileID: 2118148580}
+  - {fileID: 1091837728}
+  blocked: 0
 --- !u!1 &1151165537
 GameObject:
   m_ObjectHideFlags: 0
@@ -3363,8 +3572,9 @@ GameObject:
   - component: {fileID: 1216904495}
   - component: {fileID: 1216904497}
   - component: {fileID: 1216904496}
+  - component: {fileID: 1216904498}
   m_Layer: 0
-  m_Name: Point6 (9)
+  m_Name: Point15
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3433,6 +3643,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216904494}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1216904498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216904494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 1485285674}
+  - {fileID: 1084534018}
+  blocked: 0
 --- !u!1 &1219493353
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,8 +3671,9 @@ GameObject:
   - component: {fileID: 1219493354}
   - component: {fileID: 1219493356}
   - component: {fileID: 1219493355}
+  - component: {fileID: 1219493357}
   m_Layer: 0
-  m_Name: Point6 (3)
+  m_Name: Point9
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3514,6 +3742,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219493353}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1219493357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219493353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 579359672}
+  - {fileID: 1093385897}
+  blocked: 0
 --- !u!1 &1220143806
 GameObject:
   m_ObjectHideFlags: 0
@@ -3838,8 +4083,9 @@ GameObject:
   - component: {fileID: 1310163908}
   - component: {fileID: 1310163910}
   - component: {fileID: 1310163909}
+  - component: {fileID: 1310163911}
   m_Layer: 0
-  m_Name: Point6 (1)
+  m_Name: Point7
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3908,6 +4154,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310163907}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1310163911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310163907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 1426119234}
+  - {fileID: 579359672}
+  blocked: 0
 --- !u!1 &1359157397
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,6 +4312,7 @@ GameObject:
   - component: {fileID: 1426119231}
   - component: {fileID: 1426119233}
   - component: {fileID: 1426119232}
+  - component: {fileID: 1426119234}
   m_Layer: 0
   m_Name: Point6
   m_TagString: Untagged
@@ -4119,6 +4383,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426119230}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1426119234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426119230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 386882339}
+  - {fileID: 1310163911}
+  blocked: 0
 --- !u!1 &1485285670
 GameObject:
   m_ObjectHideFlags: 0
@@ -4130,8 +4411,9 @@ GameObject:
   - component: {fileID: 1485285671}
   - component: {fileID: 1485285673}
   - component: {fileID: 1485285672}
+  - component: {fileID: 1485285674}
   m_Layer: 0
-  m_Name: Point6 (8)
+  m_Name: Point14
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4200,6 +4482,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485285670}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1485285674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485285670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 663695087}
+  - {fileID: 1216904498}
+  blocked: 0
 --- !u!1 &1653802277
 GameObject:
   m_ObjectHideFlags: 0
@@ -4241,11 +4540,30 @@ MonoBehaviour:
   - {fileID: 843234967}
   - {fileID: 41808992}
   - {fileID: 41808992}
+  _nodeArray:
+  - {fileID: 41808995}
+  - {fileID: 219423358}
+  - {fileID: 1989738088}
+  - {fileID: 843234970}
+  - {fileID: 386882339}
+  - {fileID: 1426119234}
+  - {fileID: 1310163911}
+  - {fileID: 579359672}
+  - {fileID: 1219493357}
+  - {fileID: 1093385897}
+  - {fileID: 2118148580}
+  - {fileID: 663695087}
+  - {fileID: 1091837728}
+  - {fileID: 1485285674}
+  - {fileID: 1216904498}
+  - {fileID: 1084534018}
+  _nodeNewArray: []
   _speed: 2
   _maxVelocity: 8
   _maxForce: 5
   _boidViewRadius: 2.6
   _boidIsNear: 0
+  startPathFinding: 0
   boidPos: {x: 0, y: 0, z: 0}
   energy: 10
   _boidMask:
@@ -4322,7 +4640,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653802277}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.291445, y: 0, z: -4.4494953}
+  m_LocalPosition: {x: -4.86, y: 0, z: -1.2}
   m_LocalScale: {x: 0.807601, y: 0.807601, z: 0.807601}
   m_Children: []
   m_Father: {fileID: 1949658972}
@@ -4343,6 +4661,7 @@ MonoBehaviour:
   target: {fileID: 1720661560}
   viewRadius: 9.25
   viewAngle: 141.66
+  _enemy: {fileID: 0}
 --- !u!114 &1653802284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4357,6 +4676,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemiesList:
   - {fileID: 702408624}
+  - {fileID: 127960495}
+  - {fileID: 2058374557}
+  _nodeArray: []
   playerPos: {x: 0, y: 0, z: 0}
   maskWall:
     serializedVersion: 2
@@ -4560,12 +4882,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720661555}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d78ce7d85f8d17f4ea1aaa9ef94c0c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 2
 --- !u!135 &1720661557
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4636,7 +4958,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720661555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.2, y: 0, z: 0.88}
+  m_LocalPosition: {x: -18.32, y: 0, z: 0.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4674,7 +4996,6 @@ MonoBehaviour:
   maskWall:
     serializedVersion: 2
     m_Bits: 512
-  pathfinding: {fileID: 0}
   player: {fileID: 1720661556}
 --- !u!4 &1820270957
 Transform:
@@ -4826,11 +5147,11 @@ Transform:
   m_LocalPosition: {x: -15.58, y: 0, z: 8.1}
   m_LocalScale: {x: 0.54172, y: 0.54172, z: 0.54172}
   m_Children:
+  - {fileID: 41808992}
   - {fileID: 219423355}
   - {fileID: 1989738085}
   - {fileID: 843234967}
   - {fileID: 386882336}
-  - {fileID: 41808992}
   - {fileID: 1426119231}
   - {fileID: 1310163908}
   - {fileID: 579359669}
@@ -4890,8 +5211,9 @@ GameObject:
   - component: {fileID: 1989738085}
   - component: {fileID: 1989738087}
   - component: {fileID: 1989738086}
+  - component: {fileID: 1989738088}
   m_Layer: 0
-  m_Name: Point2
+  m_Name: Point3
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4909,7 +5231,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1910935010}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1989738086
 MeshRenderer:
@@ -4960,6 +5282,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989738084}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1989738088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989738084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 219423358}
+  - {fileID: 386882339}
+  blocked: 0
 --- !u!1 &2005381449
 GameObject:
   m_ObjectHideFlags: 0
@@ -5218,7 +5557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2058374551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5234,11 +5573,30 @@ MonoBehaviour:
   points:
   - {fileID: 1216904495}
   - {fileID: 1084534015}
+  _nodeArray:
+  - {fileID: 41808995}
+  - {fileID: 219423358}
+  - {fileID: 1989738088}
+  - {fileID: 843234970}
+  - {fileID: 386882339}
+  - {fileID: 1426119234}
+  - {fileID: 1310163911}
+  - {fileID: 579359672}
+  - {fileID: 1219493357}
+  - {fileID: 1093385897}
+  - {fileID: 2118148580}
+  - {fileID: 663695087}
+  - {fileID: 1091837728}
+  - {fileID: 1485285674}
+  - {fileID: 1216904498}
+  - {fileID: 1084534018}
+  _nodeNewArray: []
   _speed: 2
   _maxVelocity: 8
   _maxForce: 5
   _boidViewRadius: 2.6
   _boidIsNear: 0
+  startPathFinding: 0
   boidPos: {x: 0, y: 0, z: 0}
   energy: 10
   _boidMask:
@@ -5336,6 +5694,7 @@ MonoBehaviour:
   target: {fileID: 1720661560}
   viewRadius: 9.25
   viewAngle: 141.66
+  _enemy: {fileID: 0}
 --- !u!114 &2058374557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5352,6 +5711,7 @@ MonoBehaviour:
   - {fileID: 1653802284}
   - {fileID: 702408624}
   - {fileID: 127960495}
+  _nodeArray: []
   playerPos: {x: 0, y: 0, z: 0}
   maskWall:
     serializedVersion: 2
@@ -5369,8 +5729,9 @@ GameObject:
   - component: {fileID: 2118148577}
   - component: {fileID: 2118148579}
   - component: {fileID: 2118148578}
+  - component: {fileID: 2118148580}
   m_Layer: 0
-  m_Name: Point6 (5)
+  m_Name: Point11
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5439,6 +5800,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118148576}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2118148580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118148576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d2a7b9019d72458b1ae5625a83eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  neighbors:
+  - {fileID: 579359672}
+  - {fileID: 1093385897}
+  - {fileID: 663695087}
+  blocked: 0
 --- !u!1 &2134902113
 GameObject:
   m_ObjectHideFlags: 0
