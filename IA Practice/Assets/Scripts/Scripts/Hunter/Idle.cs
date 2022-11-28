@@ -18,22 +18,11 @@ public class Idle : IState
 
     public void OnUpdate()
     {
-        // Hunter.instance.ChargeEnergy();
-
-        // if (Hunter.instance.Energy >= 10)
-        // {
-        //     if (Hunter.instance._boidIsNear)
-        //     {
-        //         _fsm.ChangeState("Chase");
-        //     }
-
-            _fsm.ChangeState("Patrol");
-        //}
-
+        _fsm.ChangeState("Patrol");
     }
 
     public void OnExit()
     {
-        //Debug.Log("TERMINO IDLE");
+
     }
 }

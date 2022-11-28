@@ -10,11 +10,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] LayerMask maskWall;
     public Hunter _hunter;
     public bool seePlayer;
-   // Pathfinding _pathFinding;
+
     void Start()
     {
         _hunter = GetComponent<Hunter>();
-       // _pathFinding = GetComponent<Pathfinding>();
 
     }
 
@@ -30,7 +29,7 @@ public class Enemy : MonoBehaviour
             enemy.InLineOfSight(enemy.transform.position, playerPos);
             if (enemy.seePlayer)
             {
-                //ACA NO ESTA EL PROBLEMA
+
                 Debug.Log(enemy.name + "Persiguiendo");
                 enemy._hunter.boidPos = playerPos;
                 enemy._hunter._boidIsNear = true;
@@ -46,15 +45,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    /// <summary>
-    /// If the raycast from the start position to the end position doesn't hit anything in the maskWall
-    /// layer, then return true
-    /// </summary>
-    /// <param name="Vector3">start - The starting position of the raycast.</param>
-    /// <param name="Vector3">start - The starting position of the raycast.</param>
-    /// <returns>
-    /// The return value is a boolean.
-    /// </returns>
+
     public bool InLineOfSight(Vector3 start, Vector3 end)
     {
         Vector3 dir = end - start;

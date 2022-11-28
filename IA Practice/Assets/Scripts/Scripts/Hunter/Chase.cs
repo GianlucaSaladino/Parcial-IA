@@ -62,18 +62,7 @@ public class Chase : IState
         return steering;
     }
 
-    // Vector3 Pursuit(Player target)
-    // {
-    //     Vector3 finalPos = target.transform.position + target.transform.forward * Time.deltaTime;
-    //     Vector3 desired = finalPos - _transform.position;
-    //     desired.Normalize();
-    //     desired *= _maxVelocity;
-
-    //     Vector3 steering = desired - _velocity;
-
-    //     return steering;
-    // }
-
+  
     void Move(Vector3 force)
     {
         _velocity = Vector3.ClampMagnitude(_velocity + force, _maxForce);
@@ -82,6 +71,6 @@ public class Chase : IState
 
     public void OnExit()
     {
-       // Debug.Log("EXIT ESTADO PERSEGUIR");
+
     }
 }

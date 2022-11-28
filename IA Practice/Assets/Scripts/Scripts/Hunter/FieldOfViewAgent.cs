@@ -7,9 +7,10 @@ public class FieldOfViewAgent : MonoBehaviour
     public Transform target;
     public float viewRadius;
     public float viewAngle;
-    [SerializeField]private Enemy _enemy;
+    [SerializeField] private Enemy _enemy;
 
-    private void Start() {
+    private void Start()
+    {
         _enemy = GetComponent<Enemy>();
     }
 
@@ -34,7 +35,7 @@ public class FieldOfViewAgent : MonoBehaviour
     bool InFOV(Transform obj)
     {
         Vector3 dir = obj.position - transform.position;
-        var viewRadiusSqr = viewRadius*viewRadius;
+        var viewRadiusSqr = viewRadius * viewRadius;
         if (dir.sqrMagnitude < viewRadiusSqr)
         {
             if (Vector3.Angle(transform.forward, dir) <= viewAngle / 2)
@@ -42,8 +43,8 @@ public class FieldOfViewAgent : MonoBehaviour
                 return _enemy.InLineOfSight(transform.position, obj.position);
             }
         }
-        
-        return false;       
+
+        return false;
     }
 
     private void OnDrawGizmos()
@@ -64,5 +65,5 @@ public class FieldOfViewAgent : MonoBehaviour
         return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), 0, Mathf.Cos(angle * Mathf.Deg2Rad));
     }
 
-    
+
 }

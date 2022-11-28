@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     float _movHor;
     float _movVer;
     Vector3 dir;
+    [SerializeField] Rigidbody _rb;
 
 
     private void Update()
@@ -16,10 +17,17 @@ public class Player : MonoBehaviour
         _movVer = Input.GetAxis("Vertical");
         dir.x = _movHor;
         dir.z = _movVer;
+    }
 
-        transform.Translate(dir*speed*Time.deltaTime);
-        
+    private void FixedUpdate() {
+        _rb.velocity = dir*speed;
+    }
 
+    private void OnCollisionEnter(Collision other) {
+        if(other.gameObject.CompareTag("Goal")){
+            Debug.Log("Termino");
+            UnityEditor.EditorApplication.ExitPlaymode();
+        }
     }
 
 }

@@ -31,7 +31,7 @@ public class Patrol : IState
 
     public void OnEnter()
     {
-        //Debug.Log("EMPECE A PATRULLAR");
+
     }
 
     public void OnUpdate()
@@ -48,18 +48,11 @@ public class Patrol : IState
             _fsm.ChangeState("PathFinding");
         }
 
-        // if (Hunter.instance.Energy <= 0)
-        // {
-        //     _fsm.ChangeState("Idle");
-        // }
-
-        // Debug.Log("current" + _current);
-        // Debug.Log("last" + _last);
     }
 
     public void OnExit()
     {
-        //Debug.Log("DEJE DE PATRULLAR");
+
     }
 
     private void PointPatrol()
@@ -67,7 +60,6 @@ public class Patrol : IState
         var dir = _points[_current].position - _transform.position;
         _transform.forward = dir;
         _transform.position += dir.normalized * _speed * Time.deltaTime;
-        //Hunter.instance.DecreaseEnergy();
 
         if (dir.magnitude <= minDetectPoint)
         {

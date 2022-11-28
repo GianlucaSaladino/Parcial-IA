@@ -16,15 +16,6 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    // private void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Space))
-    //     {
-    //         StartCoroutine(pathfinding.CoroutineCalculateThetaStar(_startingNode, _goalNode));
-    //         //player.SetPath(pathfinding.CalculateBFS(_startingNode, _goalNode));
-    //     }
-    // }
-
     public void SetStartingNode(Node node)
     {
         if (_startingNode != null)

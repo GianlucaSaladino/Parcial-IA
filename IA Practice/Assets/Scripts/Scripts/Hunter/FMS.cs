@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FMS
 {
-  
+
     Dictionary<string, IState> _states = new Dictionary<string, IState>();
     IState _currentState;
 
